@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "config/material-tailwind-theme-provider";
+import ReactQueryClientProvider from "config/ReactQueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ReactQueryClientProvider>
     <ThemeProvider>
       {/* @ts-ignore */}
       <html lang="en">
@@ -27,5 +29,7 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>{children}</body>
       </html>
     </ThemeProvider>
+
+    </ReactQueryClientProvider>
   );
 }
